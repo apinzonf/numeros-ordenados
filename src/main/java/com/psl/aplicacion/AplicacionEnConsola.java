@@ -10,17 +10,24 @@ import org.apache.commons.io.LineIterator;
 
 import com.psl.numerico.NumeroOrdenado;
 
+/**
+ * Clase con metodo de entrada a la aplicación en consola.
+ * */
 public class AplicacionEnConsola {
 	public static final String MENSAJE_SALIDA_POR_CASO = "Caso: ";
 	
 	private BufferedWriter bufferSalida;
 	private LineIterator lineaDeEntrada;
-	private StringBuffer textoSalida;
+	private StringBuilder textoSalida;
 	
+	/**
+	 * @param nombreArchivoEntrada Nombre del archivo de entrada a procesar
+	 * @param nombreArchivoSalida  Nombre del archivo de salida para escribir los resultados
+	 * */
 	public AplicacionEnConsola(String nombreArchivoEntrada, String nombreArchivoSalida) throws IOException {
 		File archivoEntrada = new File(nombreArchivoEntrada);
 		File archivoSalida = new File(nombreArchivoSalida);
-		textoSalida = new StringBuffer(); 
+		textoSalida = new StringBuilder(); 
 		bufferSalida = new BufferedWriter(new FileWriter(archivoSalida));
 		lineaDeEntrada = FileUtils.lineIterator(archivoEntrada, "UTF-8");
 	}
@@ -37,7 +44,6 @@ public class AplicacionEnConsola {
 			textoSalida.append(numeroOrdenado);
 			textoSalida.append("\n");
 		}
-		
 	}
 	
 	public void escribirResultadoEnArchivoDeSalida() throws IOException {
