@@ -89,6 +89,21 @@ $java -jar target/numeros-ordenados-0.0.1-jar-with-dependencies.jar resources/en
 
 En el ejemplo anterior el archivo entrada.txt esta en la carpeta resources, y el de salida se pondra en el mismo lugar
 
+## Medir el tiempo de ejecución
+
+Yo use el comando time de UNIX para medir el tiempo de ejecucion
+
+Ejemplo: 
+
+$ time java -jar target/numeros-ordenados-0.0.1-jar-with-dependencies.jar resources/entrada-large.txt resources/salida-large.txt
+
+real    0m1.067s
+
+user    0m0.000s
+
+sys     0m0.016s
+
+
 
 ## Análisis de complejidad 
 El método obtenerNumeroOrdenadoMenorQue dentro de la clase NumeroOrdenado contiene un ciclo que verifica digito x digito si el siguiente desde la posición 0 es mayor o igual, de forma que para cuando encuentra un digito menor.
