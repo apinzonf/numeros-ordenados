@@ -37,9 +37,13 @@ public class AplicacionEnConsola {
 		
 		for (int i=1; i<=numeroDeCasosDePrueba; i++) {
 			String numeroEntrada = lineaDeEntrada.next();
-			String numeroOrdenado = NumeroOrdenado.obtenerNumeroOrdenadoMenorQue(numeroEntrada);
-			textoSalida.append(MENSAJE_SALIDA_POR_CASO + i + 
-							   ": N=" +	numeroEntrada + ", O=" + numeroOrdenado + "\n");
+			textoSalida.append(MENSAJE_SALIDA_POR_CASO);
+			textoSalida.append(i);  
+			textoSalida.append(": N=");
+			textoSalida.append(numeroEntrada);
+			textoSalida.append(", O=");
+			NumeroOrdenado.obtenerNumeroOrdenadoMenorQue(numeroEntrada, textoSalida);
+			textoSalida.append("\n");
 		}
 	}
 	

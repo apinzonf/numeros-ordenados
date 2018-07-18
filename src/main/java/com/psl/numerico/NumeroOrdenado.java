@@ -12,13 +12,12 @@ public class NumeroOrdenado {
 	 * Enccontrar el número ordenado que es el mayor de todos los 
 	 * números ordenados menores que el número dado 
 	 * @param numeroEntrada entero N, 1 <= N <= 10^18 
-	 * @return número ordenado M, 1 <= M <= 10^18
+	 * @param textoSalida objeto para escribir el número ordenado M, 1 <= M <= 10^18
 	 * */
-	public static String obtenerNumeroOrdenadoMenorQue(String numeroEntrada){
-		String numeroSalida;
+	public static void obtenerNumeroOrdenadoMenorQue(String numeroEntrada, StringBuilder textoSalida){
 		int longitudEntrada = numeroEntrada.length();
 		if (longitudEntrada <= 1) {
-			numeroSalida = numeroEntrada;
+			textoSalida.append(numeroEntrada);
 		} else {
 			int indice = 0;
 			int repeticiones = 0;
@@ -31,29 +30,25 @@ public class NumeroOrdenado {
 				}
 				indice ++;
 			}
-			numeroSalida = cambiarDigitosPorMaximoPosible(numeroEntrada, indice, repeticiones);
+			cambiarDigitosPorMaximoPosible(numeroEntrada, indice, repeticiones, textoSalida);
 		}
-		return numeroSalida;
+		
 	}
 	
-	private static String cambiarDigitosPorMaximoPosible(String numeroEntrada, int indice, int repeticiones) {
-		String numeroSalida;
-		StringBuilder buferSalida = new StringBuilder(18);
+	private static void cambiarDigitosPorMaximoPosible(String numeroEntrada, int indice, int repeticiones, StringBuilder textoSalida) {
 		int longitudEntrada = numeroEntrada.length();
 		if (indice == longitudEntrada-1) {
-			numeroSalida = numeroEntrada;
+			textoSalida.append(numeroEntrada);
 		} else {
-			buferSalida.append(numeroEntrada.substring(0, indice-repeticiones));
+			textoSalida.append(numeroEntrada.substring(0, indice-repeticiones));
 			if (numeroEntrada.charAt(indice-repeticiones) != '1') {
 				char digitoParaDecrementar = numeroEntrada.charAt(indice-repeticiones);
 				digitoParaDecrementar -= 1;
-				buferSalida.append(digitoParaDecrementar);
+				textoSalida.append(digitoParaDecrementar);
 			}
 			int numeroDeDigitosParaRemplazar = numeroEntrada.length() - indice + repeticiones - 1;
-			buferSalida.append(NUMERO_ORDENADO_MAXIMO.substring(0, numeroDeDigitosParaRemplazar));
-			numeroSalida = buferSalida.toString(); 
+			textoSalida.append(NUMERO_ORDENADO_MAXIMO.substring(0, numeroDeDigitosParaRemplazar)); 
 		}
-		return numeroSalida;
 	}
 	
 }
