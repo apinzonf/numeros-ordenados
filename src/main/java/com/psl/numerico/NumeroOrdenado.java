@@ -16,16 +16,15 @@ public class NumeroOrdenado {
 	 * */
 	public static String obtenerNumeroOrdenadoMenorQue(String numeroEntrada){
 		String numeroSalida;
-		char[] digitosEntrada = numeroEntrada.toCharArray();
-		int longitudEntrada = digitosEntrada.length;
+		int longitudEntrada = numeroEntrada.length();
 		if (longitudEntrada <= 1) {
 			numeroSalida = numeroEntrada;
 		} else {
 			int indice = 0;
 			int repeticiones = 0;
 			while ((indice + 1) != longitudEntrada 
-				   && digitosEntrada[indice] <= digitosEntrada[indice+1]) {
-				if (digitosEntrada[indice] == digitosEntrada[indice+1]) {
+				   && numeroEntrada.charAt(indice) <= numeroEntrada.charAt(indice+1)) {
+				if (numeroEntrada.charAt(indice) == numeroEntrada.charAt(indice+1)) {
 					repeticiones ++;
 				} else {
 					repeticiones = 0;
