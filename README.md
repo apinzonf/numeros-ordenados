@@ -112,20 +112,16 @@ En el mejor caso el algoritmo se detendrá en la primera comparación siendo el 
 
 Mejor caso O(1)
 
-En el caso promedio el algoritmo realizara 1 o 2 o 3 o n-1 comparaciones hasta que llegue al final.
+En el caso promedio el algoritmo realizara 1 o 2 o 3 o n-1 comparaciones hasta que llegue al final realizara en promedio n/2 comparaciones
 
-Caso promedio O(n/2)
+Caso promedio O(n)
 
 En el peor caso realizara n-1 comparaciones que corresponde al caso cuando el número de entrada es un número ordenados
 
 Peor Caso O(n)
 
-El método cambiarDigitosPorMaximoPosible realiza copia con base en arreglos y usando estructuras fijas que le permiten tener una complejidad constante que es despreciable junto a O(n/2) o  O(n).
+El método cambiarDigitosPorMaximoPosible realiza copia con base en arreglos y usando estructuras fijas que le permiten tener una complejidad constante que es despreciable junto a O(n).
 
 En conclusión la complejidad de este algoritmo es 
 
-Mejor caso O(1)
-
-Caso promedio O(n/2)
-
-Peor Caso O(n)
+T(n) = O(n)
