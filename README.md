@@ -91,7 +91,7 @@ En el ejemplo anterior el archivo entrada.txt esta en la carpeta resources, y el
 
 ## Medir el tiempo de ejecución
 
-Yo use el comando time de Windows para medir el tiempo de ejecucion
+Yo use el comando time de UNIX para medir el tiempo de ejecucion
 
 Ejemplo: 
 
