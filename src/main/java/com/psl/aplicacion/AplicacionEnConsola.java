@@ -18,7 +18,7 @@ public class AplicacionEnConsola {
 	
 	private BufferedWriter bufferSalida;
 	private LineIterator lineaDeEntrada;
-	private StringBuilder textoSalida;
+	File archivoSalida;
 	
 	/**
 	 * @param nombreArchivoEntrada Nombre del archivo de entrada a procesar
@@ -26,30 +26,28 @@ public class AplicacionEnConsola {
 	 * */
 	public AplicacionEnConsola(String nombreArchivoEntrada, String nombreArchivoSalida) throws IOException {
 		File archivoEntrada = new File(nombreArchivoEntrada);
-		File archivoSalida = new File(nombreArchivoSalida);
-		textoSalida = new StringBuilder(); 
-		bufferSalida = new BufferedWriter(new FileWriter(archivoSalida));
+		archivoSalida = new File(nombreArchivoSalida);
 		lineaDeEntrada = FileUtils.lineIterator(archivoEntrada, "UTF-8");
 	}
 	
-	public void procesarArchivoDeEntrada() {
+	public void procesarArchivoDeEntrada() throws IOException {
 		int numeroDeCasosDePrueba = Integer.parseInt(lineaDeEntrada.next());
+		bufferSalida = new BufferedWriter(new FileWriter(archivoSalida), numeroDeCasosDePrueba * 64);
 		
 		for (int i=1; i<=numeroDeCasosDePrueba; i++) {
 			String numeroEntrada = lineaDeEntrada.next();
-			textoSalida.append(MENSAJE_SALIDA_POR_CASO);
-			textoSalida.append(i);  
-			textoSalida.append(": N=");
-			textoSalida.append(numeroEntrada);
-			textoSalida.append(", O=");
-			NumeroOrdenado.obtenerNumeroOrdenadoMenorQue(numeroEntrada, textoSalida);
-			textoSalida.append("\n");
+			bufferSalida.write(MENSAJE_SALIDA_POR_CASO);
+			bufferSalida.write(i);  
+			bufferSalida.write(": N=");
+			bufferSalida.write(numeroEntrada);
+			bufferSalida.write(", O=");
+			NumeroOrdenado.obtenerNumeroOrdenadoMenorQue(numeroEntrada, bufferSalida);
+			bufferSalida.write("\n");
 		}
 	}
 	
 	public void escribirResultadoEnArchivoDeSalida() throws IOException {
 		LineIterator.closeQuietly(lineaDeEntrada);
-		bufferSalida.write(textoSalida.toString());
 		bufferSalida.flush();
 		bufferSalida.close();
 	}

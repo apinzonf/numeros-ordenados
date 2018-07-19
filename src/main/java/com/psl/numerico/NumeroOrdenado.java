@@ -1,5 +1,8 @@
 package com.psl.numerico;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 /**
  * Un número “ordenado” es un entero en base 10, sin cero a la izquierda, 
  * tiene todos sus dígitos ordenados en orden no-descendente
@@ -13,8 +16,9 @@ public class NumeroOrdenado {
 	 * números ordenados menores que el número dado 
 	 * @param numeroEntrada entero N, 1 <= N <= 10^18 
 	 * @param textoSalida objeto para escribir el número ordenado M, 1 <= M <= 10^18
+	 * @throws IOException 
 	 * */
-	public static void obtenerNumeroOrdenadoMenorQue(String numeroEntrada, StringBuilder textoSalida){
+	public static void obtenerNumeroOrdenadoMenorQue(String numeroEntrada, BufferedWriter textoSalida) throws IOException{
 		int longitudEntrada = numeroEntrada.length();
 		if (longitudEntrada <= 1) {
 			textoSalida.append(numeroEntrada);
@@ -35,7 +39,7 @@ public class NumeroOrdenado {
 		
 	}
 	
-	private static void cambiarDigitosPorMaximoPosible(String numeroEntrada, int indice, int repeticiones, StringBuilder textoSalida) {
+	private static void cambiarDigitosPorMaximoPosible(String numeroEntrada, int indice, int repeticiones, BufferedWriter textoSalida) throws IOException {
 		int longitudEntrada = numeroEntrada.length();
 		if (indice == longitudEntrada-1) {
 			textoSalida.append(numeroEntrada);
